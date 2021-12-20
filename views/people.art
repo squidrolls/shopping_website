@@ -1,0 +1,82 @@
+{{include './common/head.art'}}
+
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <div style="padding: 15px;">
+             <div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2" style="background: azure">
+
+            <form action="/people" method="post">
+                <div class="form-group">
+                    <label for="username" >用户名：</label>
+                    <div class="input-group has-success has-feedback">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+                        <input type="text" class="form-control" id="username" name="username" value="{{username}}" disabled>
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <label for="password">邮箱地址：</label>
+                    <div class="input-group has-success has-feedback">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></div>
+                        <input type="email" class="form-control" id="email" name="email" value="{{email}}" disabled>
+                    </div>
+                </div>
+                
+                    <div class="form-group ">
+                        <label for="birthday">出生日期:</label>
+                        <div class="input-group has-feedback">
+                            <div class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></div>
+                            <input type="date" class="form-control" name="birthday" id="birthday" value="{{birthday}}" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label for="birthday2">注册日期:</label>
+                        <div class="input-group has-feedback">
+                            <div class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></div>
+                            <input type="date" class="form-control" name="birthday2" id="birthday2" value="2021-05-27" disabled >
+                        </div>
+                    </div>
+                
+                    <div class="form-group ">
+                        <label for="sex" >性&nbsp;&nbsp;&nbsp;&nbsp;别：</label>
+                        <div class="input-group has-success has-feedback">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-heart"></span></div>
+                        <input type="text" class="form-control" name="sex" id="sex" value="{{sex}}" disabled> 
+                        </div>
+                    </div>
+
+                    <div class="row">
+                    <div class="form-inline">
+                        <a href="#" class="btn btn-success col-md-2 col-md-offset-2 modify" id="modify" >修改</a>
+                        
+                        <button type="submit" class="btn btn-success col-md-2 col-md-offset-2" id="submit" disabled>提交</button>
+                    </div>
+                    </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+
+    <div class="layui-footer" style="text-align: center;font-family: 仿宋;font-size: large">
+        请谨慎进行消费
+
+    </div>
+</div>
+{{include './common/script.art'}}
+
+<script>
+        $(".modify").on('click',function(){
+            document.getElementById('email').disabled="";
+            document.getElementById('birthday').disabled="";
+            document.getElementById('submit').disabled="";
+           document.getElementById('.modify').disabled="disabled";
+    })
+
+</script>
+</body>
+</html>
+

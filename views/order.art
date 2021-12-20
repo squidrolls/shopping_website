@@ -1,0 +1,56 @@
+{{include './common/head-admin.art'}}
+
+<div class="layui-body">
+
+        <!-- 内容主体区域 -->
+    <div style="padding: 15px;">
+<table class="table table-hover">
+    <tr class="success">
+        <th>订单号</th>
+        <th>时间</th>
+        <th>顾客</th>
+        <th>金额</th>
+        <th>当前状态</th>
+        <th>接受/拒绝</th>
+        <th>发邮件</th>
+    </tr>
+    {{each order}}
+    <tr>
+        <td>{{$value._id}}</td>
+        <td>{{$value.time}}</td>
+        <td>{{$value.username}}</td>
+        <td>{{$value.money}}</td>
+        <td>
+        {{if $value.type==0}}
+                待确认
+                
+        {{else if $value.type==1}}
+                已确认
+                
+        {{else}}
+                已拒绝
+                
+        {{/if}}
+        </td>
+        <td>
+        <a href="/sendout?id={{$value._id}}&status=1"><span class="glyphicon glyphicon-ok-sign" title="去发货" style="color: aquamarine;background: aliceblue;font-size: 20px"></span></a>
+        <a href="/sendout?id={{$value._id}}&status=2"><span class="glyphicon glyphicon-remove" title="拒绝" style="color:red ;background: aliceblue;font-size: 20px"></span></a>
+        </td>
+        <td>
+        <a href="sendEmail?id={{$value._id}}"><span class="glyphicon glyphicon-envelope" title="发送邮件" style="color: green;background: aliceblue;font-size: 20px"></span></a>
+        
+        </td>
+
+    </tr>
+    {{/each}}
+</table>
+    </div>
+
+    <div class="layui-footer" style="text-align: center;font-family: 仿宋;font-size: large">
+        请谨慎进行消费
+
+    </div>
+</div>
+{{include './common/script.art'}}
+</body>
+</html>

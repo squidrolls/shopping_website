@@ -1,0 +1,17 @@
+{{include './common/head.art'}}
+
+<div class="layui-body">
+
+        <!-- 内容主体区域 -->
+    <div style="padding: 15px;">
+        <h2><p style="text-align: center;">这里空空如也</p></h2>
+    </div>
+
+    <div class="layui-footer" style="text-align: center;font-family: 仿宋;font-size: large">
+        请谨慎进行消费
+
+    </div>
+</div>
+{{include './common/script.art'}}
+</body>
+</html>

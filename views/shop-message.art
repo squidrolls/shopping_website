@@ -1,0 +1,30 @@
+{{include './common/head-supply.art'}}
+
+<div class="layui-body">
+
+        <!-- 内容主体区域 -->
+    <div style="padding: 15px;">
+    <div style="height: 50px"></div>
+        
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-4"><img src="/img/score.jpg" alt="" width="400px" height="400px"></div>
+
+            <div class="col-md-4">
+                <h1>店铺名称：<div style="color: #1f2fba">{{name}}</div></h1>
+                <div style="height: 30px"></div>
+                <h3>总订单数：239</h3>
+                <h3>信用情况：优秀</h3>
+                <h3>总营业额：23333元</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-footer" style="text-align: center;font-family: 仿宋;font-size: large">
+        请谨慎进行消费
+
+    </div>
+</div>
+{{include './common/script.art'}}
+</body>
+</html>

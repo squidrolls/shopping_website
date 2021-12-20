@@ -1,0 +1,35 @@
+{{include './common/head-supply.art'}}
+
+<div class="layui-body">
+
+        <!-- 内容主体区域 -->
+    <div style="padding: 15px;">
+<table class="table table-hover">
+    <tr class="success">
+        <th>商品名称</th>
+        <th>单价</th>
+        <th>描述</th>
+        <th>库存</th>
+        <th>操作</th>
+    </tr>
+    {{each score}}
+    <tr>
+        <td>{{$value.GName}}</td>
+        <td>{{$value.Price}}</td>
+        <td>{{$value.GDscrpt}}</td>
+        <td>{{$value.Stock}}</td>
+        <td><a href="/delete-score?Gid={{$value.Gid}}"><span class="glyphicon glyphicon-trash" title="删除"></span></a>
+<a href="/modify-score?Gid={{$value.Gid}}"><span class="glyphicon glyphicon-repeat" title="修改"></span></a></td>
+    </tr>
+    {{/each}}
+</table>
+    </div>
+
+    <div class="layui-footer" style="text-align: center;font-family: 仿宋;font-size: large">
+        请谨慎进行消费
+
+    </div>
+</div>
+{{include './common/script.art'}}
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>用户界面</title>
+    <link rel="stylesheet" type="text/css" href="https://www.layuicdn.com/layui/css/layui.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="layui-layout-body ">
+<div class="layui-layout layui-layout-admin ">
+    <div class="layui-header">
+        <div class="layui-logo ">电子购物网站</div>
+
+        <ul class="layui-nav layui-layout-left ">
+            <li class="layui-nav-item"><a href="/people">个人信息</a></li>
+        </ul>
+
+
+        <ul class="layui-nav layui-layout-right ">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+                    {{message}}
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="/logout">退出登录</a></dd>
+
+                </dl>
+            </li>
+
+        </ul>
+    </div>
+
+    <div class="layui-side  layui-bg-black">
+        <div class="layui-side-scroll ">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree " >
+                <li class="layui-nav-item"><a href="/shop">商品显示</a></li>
+                <li class="layui-nav-item"><a href="/shopcart">购物车</a></li>
+                <li class="layui-nav-item"><a href="/shop-history">历史购物记录</a></li>
+            </ul>
+        </div>
+    </div>

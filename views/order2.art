@@ -1,0 +1,43 @@
+{{include './common/head-supply.art'}}
+
+
+<div class="layui-body">
+
+        <!-- 内容主体区域 -->
+    <div style="padding: 15px;">
+<table class="table table-hover">
+    <tr class="success">
+        <th>订单号</th>
+        
+        <th>顾客</th>
+        <th>商品名</th>
+
+        <th>商品数量</th>
+
+        <th>操作</th>
+    </tr>
+    {{each list}}
+    <tr>
+        <td>{{$value.orderId}}</td>
+        <td>{{$value.username}}</td>
+        
+        <td>{{$value.name}}</td>
+        <td>{{$value.number}}</td>
+        <td>
+        发货
+        </td>
+       
+
+    </tr>
+    {{/each}}
+</table>
+    </div>
+
+    <div class="layui-footer" style="text-align: center;font-family: 仿宋;font-size: large">
+        请谨慎进行消费
+
+    </div>
+</div>
+{{include './common/script.art'}}
+</body>
+</html>

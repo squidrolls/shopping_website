@@ -1,0 +1,128 @@
+{{include './common/head.art'}}
+
+    <div class="layui-body">
+        <!-- 内容主体区域 -->
+        <div style="padding: 10px;">
+            <div class="container" >
+                <div style="margin: 10px auto;width: 800px;">
+                    <form action="/shop" method="post"  name="FindForm" id="FindForm">
+                        <div class="form-inline" style="margin: auto">
+                            <div class="form-group">
+                                <label for="GName">请输入要查找的商品名</label>
+                                <input type="text" class="form-control" name="GName" id="GName" >
+                            </div>
+                            <button type="submit" class="btn btn-success">查找</button>
+                             
+                             <a href='/shop?page={{page}}&sort=2&type={{type}}' class="btn btn-default btn-sm" title="降序"><span class="glyphicon glyphicon-triangle-bottom"></span></a>
+                             <a href='/shop?page={{page}}&sort=1&type={{type}}' class="btn btn-default btn-sm" title="升序"><span class="glyphicon glyphicon-triangle-top"></span></a>
+                        </div>
+
+                    </form>
+                </div>
+                <hr>
+ <p style="text-align:center"></p>               
+                
+
+ <div class="row">
+ {{each score}}
+        <div class="col-md-6" style="height=300px;background: azure;padding:10px;">
+            <div class="row">
+                <div class="col-md-6" >
+                        <img src="{{$value.Photos}}" alt=""  width="250px" height="200px" style="border-radius: 20px">
+                </div>
+
+                <div class="col-md-6" style="font-size: 15px;height: 200px;">
+                        <a href="/detail?Gid={{$value.Gid}}"><div>商品名称:{{$value.GName}}</div></a>
+                        <div>单价：{{$value.Price}}</div>
+                        <div>折扣：{{$value.Rebate}}</div>
+                        <div >商品简介：{{$value.GDscrpt}}</div>
+                         
+                         
+                         <form action="\add" method="post" class="shoppingcart" style="position: absolute;bottom: 10px">
+            <div class="form-inline">
+                
+                <div class="form-group">
+                    <label for="Gid" class="sr-only" >id</label>
+                    <input type="text " class="form-control input-small "  name="Gid" style="display:none" value={{$value.Gid}} >
+                </div>
+                <a href="#" class="btn btn-default btn-sm add" title="增加"  ><span class="glyphicon glyphicon-chevron-up"></span></a>    
+                <div class="form-group">
+                    <label for="number" class="sr-only" >数量</label>
+                    <input type="text " class="form-control input-small" name="number"  oninput = "value=value.replace(/[^\d]/g,'')" style="width:100px;">
+                </div>
+                <a href="#" class="btn btn-default btn-sm reduce" title="减少" ><span class="glyphicon glyphicon-chevron-down"></span></a>
+                <button  type="submit" class="btn btn-default btn-sm" title="加入购物车"><span class="glyphicon glyphicon-shopping-cart"></span></button>
+            </div>
+
+        </form>
+                </div>
+            </div>
+           
+        </div>
+{{/each}}
+</div>               
+
+                
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-footer" style="text-align: center;font-family: 仿宋;font-size: large">
+        <p style="text-align: center">
+                    <a href="/shop?page={{(page-1)>0?(page-1):page}}&sort={{sort}}" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-menu-left"></span></a>
+                    <% for(var i=1;i<=total;i++){%>
+                    <a href="/shop?page=<%=i %>&sort={{sort}}" class="btn btn-default btn-sm">{{i}}</a>
+                    <% } %>
+                    <a href="/shop?page={{(page-0+1)<=total?(page-0+1):page}}&sort={{sort}}" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-menu-right"></span></a>
+        </p>
+    </div>
+</div>
+<script src="https://www.layuicdn.com/layui/layui.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js">
+<script src="/js/common.js"></script>
+<script type="text/javascript">
+    $("#FindForm").on('submit',function(){
+        var result=serializeToJson($(this));
+        if(result.GName.trim().length==0){
+            alert('查询内容不能为空');
+            return false;
+        }
+    });
+
+
+    $('.shoppingcart').on('submit',function(){
+        var result=serializeToJson($(this));
+        if(result.number.trim().length==0 || result.number==0)
+        {alert('数值不能为空');
+        return false;}
+    })
+
+
+    $(".add").on('click',function(){
+        var x1=$(this).next().find("input");
+        if(x1.val()) 
+         {
+            var y=parseInt(x1.val());
+            y=y+1;
+            x1.val(y);
+        }
+        else x1.val(1);
+    })
+
+    $(".reduce").on('click',function(){
+        var x1=$(this).prev().find("input");
+        if(x1.val())
+         {
+            var y=parseInt(x1.val());
+            y=y-1;
+            x1.val(y);
+        }
+        else x1.val(0);
+    })
+    
+</script>
+{{include './common/script.art'}}
+</body>
+</html>
